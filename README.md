@@ -158,6 +158,22 @@ docker run -p 3000:3000 --env-file .env order-exec-engine
 ### Continuous Integration
 
 A GitHub Actions workflow is included at `.github/workflows/ci.yml` to run tests and build on push/PR. Once the repo is pushed to GitHub, the workflow will run automatically.
+
+### Automatic Deploy to Render (optional)
+
+This repository can automatically trigger a Render deploy when `main` is pushed. Steps:
+
+1. Create a Web Service on Render and connect the repository `asindigi2004/EternaLabsBackendProject`.
+2. Note the Render **Service ID** for the service (in the Render dashboard URL or service settings).
+3. Create a Render API Key (Dashboard → Account → API Keys).
+4. Add the following GitHub repository Secrets:
+  - `RENDER_API_KEY` — the API key value
+  - `RENDER_SERVICE_ID` — the service ID
+5. The workflow `.github/workflows/deploy-render.yml` will run on pushes to `main`, build the project, and trigger a deploy via the Render API.
+
+After the first successful deploy, add the public URL below and replace the deploy badge at the top of this `README`.
+
+- Deployed URL: <REPLACE_WITH_PUBLIC_URL>
 Feel free to ask which next step you want me to take.
  The Postman collection is included at: `postman_collection.json`.
 # Order Execution Engine
