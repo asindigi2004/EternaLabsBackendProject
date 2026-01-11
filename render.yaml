@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: EternaLabsBackendProject-service
+    env: node
+    plan: free
+    repo: asindigi2004/EternaLabsBackendProject
+    branch: main
+    buildCommand: npm ci && npm run build
+    startCommand: npm prune --production && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
